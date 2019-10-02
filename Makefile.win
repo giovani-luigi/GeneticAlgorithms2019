@@ -4,8 +4,8 @@
 CPP      = g++.exe -D__DEBUG__
 CC       = gcc.exe -D__DEBUG__
 WINDRES  = windres.exe
-OBJ      = main.o Utils.o Cromosome.o
-LINKOBJ  = main.o Utils.o Cromosome.o
+OBJ      = main.o Utils.o Chromosome.o Population.o
+LINKOBJ  = main.o Utils.o Chromosome.o Population.o
 LIBS     = -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib32" -static-libgcc -m32 -g3
 INCS     = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
 CXXINCS  = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
@@ -30,5 +30,8 @@ main.o: main.cpp
 Utils.o: Utils.cpp
 	$(CPP) -c Utils.cpp -o Utils.o $(CXXFLAGS)
 
-Cromosome.o: Cromosome.cpp
-	$(CPP) -c Cromosome.cpp -o Cromosome.o $(CXXFLAGS)
+Chromosome.o: Chromosome.cpp
+	$(CPP) -c Chromosome.cpp -o Chromosome.o $(CXXFLAGS)
+
+Population.o: Population.cpp
+	$(CPP) -c Population.cpp -o Population.o $(CXXFLAGS)

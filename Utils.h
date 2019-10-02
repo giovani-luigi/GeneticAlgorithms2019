@@ -4,6 +4,7 @@
 #include <sstream>		// stringstream
 #include <string>
 #include <ctime>		// srand(), time()
+#include <algorithm>	// sort()
 
 using namespace std;
 

@@ -6,21 +6,21 @@
 
 using namespace std;
 
-class Cromosome{
+class Chromosome{
 
 	public:
 		
-		// Constructor: Generates a cromosome from a random word,
+		// Constructor: Generates a chromosome from a random word,
 		// using a given final state to calculate the fitness
-		Cromosome(string finalState);
+		Chromosome(string finalState);
 		
 		// override operator < to support sort()
 		// we make it friend so we can access private class members
-		friend bool operator < (const Cromosome& a, const Cromosome& b);
+		friend bool operator < (const Chromosome& a, const Chromosome& b);
 		
 		// override operator for ostream objects
 		// we make it friend so we can access private class members
-		friend ostream& operator<< (ostream& out, const Cromosome& c);
+		friend ostream& operator<< (ostream& out, const Chromosome& c);
 		
 	private:
 		
