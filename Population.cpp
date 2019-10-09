@@ -149,7 +149,7 @@ Population Population::reproduce(int ratePct){
 // triggers a mutation in the current population
 void Population::mutate(){
 	
-	int qtyToMutate = Utils::random(chromosomes.size());
+	int qtyToMutate = Utils::random(chromosomes.size()/2) + 1;
 	
 	cout << "Mutating " << qtyToMutate << " chromosomes." << endl;
 	

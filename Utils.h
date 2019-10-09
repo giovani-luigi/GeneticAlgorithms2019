@@ -3,7 +3,8 @@
 
 #include <sstream>		// stringstream
 #include <string>
-#include <ctime>		// srand(), time()
+#include <ctime>		
+#include <cstdlib> // srand(), time()
 
 
 using namespace std;

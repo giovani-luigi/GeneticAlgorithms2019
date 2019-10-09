@@ -15,7 +15,7 @@ string Utils::generateWord(int size){
 	if (!randomized){
 		srand(time(0));
 		randomized = true;
-	}	
+	}
 	
 	for (int i=0; i<size; i++){
 		int index = rand() % letters.size();

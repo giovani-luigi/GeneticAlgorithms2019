@@ -5,6 +5,7 @@
 Chromosome::Chromosome(string finalState){	
 	this->value = Utils::generateWord(finalState.size());
 	this->fitness = calculateFitness(finalState);
+	this->finalState = finalState;
 }
 
 // Constructor: Generates a chromosome from a given value,
@@ -12,12 +13,15 @@ Chromosome::Chromosome(string finalState){
 Chromosome::Chromosome(string value, string finalState){
 	this->value = value;
 	this->fitness = calculateFitness(finalState);
+	this->finalState = finalState;
 }
 
 // triggers a mutation in a gene of this chromosome
 void Chromosome::mutate(){
 	int idxMutant = Utils::random(value.size());
 	value[idxMutant] = Utils::generateWord(1)[0];
+	// recalculate fitness
+	this->fitness = calculateFitness(finalState);
 }
 
 // calculate a fitness based in how close

@@ -51,6 +51,8 @@ class Chromosome{
 		
 		string value;
 		
+		string finalState;
+		
 		// the fitness of this particular chromosome
 		int fitness;
 		
