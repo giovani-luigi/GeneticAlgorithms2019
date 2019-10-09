@@ -58,7 +58,7 @@ class Chromosome{
 		
 		// member function to calculate a fitness score given 
 		// a final state expected from the cromosome
-		int calculateFitness(string finalState);
+		void setFitness(string finalState);
 
 };
 

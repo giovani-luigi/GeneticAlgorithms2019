@@ -4,16 +4,16 @@
 // using a given final state to calculate the fitness
 Chromosome::Chromosome(string finalState){	
 	this->value = Utils::generateWord(finalState.size());
-	this->fitness = calculateFitness(finalState);
 	this->finalState = finalState;
+	setFitness(finalState);
 }
 
 // Constructor: Generates a chromosome from a given value,
 // using a given final state to calculate the fitness
 Chromosome::Chromosome(string value, string finalState){
 	this->value = value;
-	this->fitness = calculateFitness(finalState);
 	this->finalState = finalState;
+	setFitness(finalState);
 }
 
 // triggers a mutation in a gene of this chromosome
@@ -21,12 +21,12 @@ void Chromosome::mutate(){
 	int idxMutant = Utils::random(value.size());
 	value[idxMutant] = Utils::generateWord(1)[0];
 	// recalculate fitness
-	this->fitness = calculateFitness(finalState);
+	setFitness(finalState);
 }
 
 // calculate a fitness based in how close
 // the current state is to the finalState
-int Chromosome::calculateFitness(string finalState){
+void Chromosome::setFitness(string finalState){
 	int fitness = 0;	
 	
 	for (int i=0; i<finalState.size(); i++){
@@ -39,7 +39,7 @@ int Chromosome::calculateFitness(string finalState){
 		if (value[i] == finalState[i]) fitness += 50;
 				
 	}
-	return fitness;
+	this->fitness = fitness;
 }
 
 // fitness getter

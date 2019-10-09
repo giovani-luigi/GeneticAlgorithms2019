@@ -33,7 +33,7 @@ void runGenetics(
 
 int main(int argc, char** argv) {
 	
-	runGenetics(50, 8000, 30, 5, true, "GIOVANI");
+	runGenetics(20, 1000, 30, 20, true, "GIOVANI");
 	
 	return 0;
 }
