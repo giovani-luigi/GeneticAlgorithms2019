@@ -15,7 +15,7 @@ void runGenetics(
 	
 	for (int i=0; i<generationCount; i++){
 
-		if (i % mutationRate)
+		if (i % mutationRate == 0)
 			population.mutate();
 		
 		population.sort();

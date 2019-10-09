@@ -64,7 +64,6 @@ Population Population::select(int ratePct, bool elitism){
 	// from the given rate, calculate the amount of chromosomes to select 
 	int qtyToSelect = (chromosomes.size() * ratePct) / 100;
 	
-	
 	for (int i = 0; i < qtyToSelect && roulette.size() > 0 ; i++){ 
 
 		// as if the fit is Zero it is not added to the roulette,
@@ -145,6 +144,26 @@ Population Population::reproduce(int ratePct){
 	}
 	
 	return Population(newPopulation, this->finalState); // returns a copy of generated population
+}
+
+// triggers a mutation in the current population
+void Population::mutate(){
+	
+	int qtyToMutate = Utils::random(chromosomes.size());
+	
+	cout << "Mutating " << qtyToMutate << " chromosomes." << endl;
+	
+	while (qtyToMutate --> 0){
+		int pos = Utils::random(chromosomes.size());
+		
+		Chromosome* mutant = &chromosomes[pos];
+		
+		cout << "Mutating [" << *mutant << "] to [";
+		
+		mutant->mutate();
+		
+		cout << *mutant << "]" << endl;
+	}
 }
 
 ostream& operator<<(ostream& out, const Population& p){

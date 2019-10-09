@@ -22,6 +22,9 @@ class Chromosome{
 		// using a given final state to calculate the fitness
 		Chromosome(string value, string finalState);
 		
+		// triggers a mutation in a gene of this chromosome
+		void mutate();
+		
 		// fitness getter
 		int getFitness();
 		

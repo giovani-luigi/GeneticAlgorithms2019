@@ -14,6 +14,12 @@ Chromosome::Chromosome(string value, string finalState){
 	this->fitness = calculateFitness(finalState);
 }
 
+// triggers a mutation in a gene of this chromosome
+void Chromosome::mutate(){
+	int idxMutant = Utils::random(value.size());
+	value[idxMutant] = Utils::generateWord(1)[0];
+}
+
 // calculate a fitness based in how close
 // the current state is to the finalState
 int Chromosome::calculateFitness(string finalState){
