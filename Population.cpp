@@ -31,8 +31,9 @@ void Population::add(Population other){
 
 // creates a new population based in a selection rate
 //  - ratePct: the rate to select. e.g. 30 (30%)
+//  - elitism: when true, the best fit will be always selected
 //  - return: the selected population
-Population Population::select(int ratePct){
+Population Population::select(int ratePct, bool elitism){
 	
     // store the selected chromosomes to pass to next generation
 	vector<Chromosome> newPopulation;
@@ -63,13 +64,26 @@ Population Population::select(int ratePct){
 	// from the given rate, calculate the amount of chromosomes to select 
 	int qtyToSelect = (chromosomes.size() * ratePct) / 100;
 	
-	for (int i = 0; i < qtyToSelect; i++){
-		
-		// select a random chromosome from roulette slots
-		int randomSlot = Utils::random(roulette.size());
-		Chromosome* selected = roulette[randomSlot];
+	
+	for (int i = 0; i < qtyToSelect && roulette.size() > 0 ; i++){ 
 
-//		cout << "Roulette selecting: " << *selected << endl;
+		// as if the fit is Zero it is not added to the roulette,
+		// there are occasions where there are no more items to add
+		// in the roulette, but we still did not select enough items
+		// so we need to perform the roulette.size() check before entering the for
+			
+		Chromosome* selected;
+
+		if (i==0 && elitism){
+			// select the last chromosome of the collection (best fit)
+			selected = &(chromosomes[chromosomes.size()-1]);
+			cout << "Roulette selecting (by elitism): " << *selected << endl;
+		}else{
+			// select a random chromosome from roulette slots
+			int randomSlot = Utils::random(roulette.size());
+			selected = roulette[randomSlot];
+			cout << "Roulette selecting: " << *selected << endl;
+		}		
 
 		// create a new roulette without the drawn chromosome for next iterations
 		vector<Chromosome*> newRoulette;
@@ -117,14 +131,14 @@ Population Population::reproduce(int ratePct){
 		dad = chromosomes[idxDad].getValue();
 		mom = chromosomes[idxMom].getValue();
 		
-		cout << "Crossing [dad= " << dad << "; mom=" << mom << "]" << endl;
+//		cout << "Crossing [dad= " << dad << "; mom=" << mom << "]" << endl;
 		
 		// child1 = dad's first half + mom's last half
 		child1 = dad.substr(0, dad.size()/2) + mom.substr(mom.size()/2, mom.size());
 		// child2 = mom's first half + dad's last half
 		child2 = mom.substr(0, mom.size()/2) + dad.substr(dad.size()/2, dad.size());
 	
-		cout << "Children [c1= " << child1 << "; c2=" << child2 << "]" << endl;
+//		cout << "Children [c1= " << child1 << "; c2=" << child2 << "]" << endl;
 	
 		newPopulation.push_back(Chromosome(child1, this->finalState));
 		newPopulation.push_back(Chromosome(child2, this->finalState));

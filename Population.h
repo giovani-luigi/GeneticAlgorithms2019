@@ -28,8 +28,9 @@ class Population{
 		
 		// creates a new population based in a selection rate
 		//  - ratePct: the rate to select. e.g. 30 (30%)
+		//  - elitism: when true, the last item (best fit if sorted) will be always included
 		//  - return: the selected population
-		Population select(int ratePct);
+		Population select(int ratePct, bool elitism);
 		
 		// triggers a reproduction in the current population
 		//  - ratePct: the rate to reproduce. e.g. 70 (70%)
