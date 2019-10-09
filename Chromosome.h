@@ -18,8 +18,15 @@ class Chromosome{
 		// using a given final state to calculate the fitness
 		Chromosome(string finalState);
 		
+		// Constructor: Generates a chromosome from a given value,
+		// using a given final state to calculate the fitness
+		Chromosome(string value, string finalState);
+		
 		// fitness getter
 		int getFitness();
+		
+		// value getter
+		string getValue();
 		
 		// override operator < to support sort()
 		// we make it friend so we can access private class members

@@ -6,6 +6,7 @@
 #include <string>
 #include <vector>
 #include <algorithm>
+#include <sstream>
 
 using namespace std;
 
@@ -13,19 +14,27 @@ class Population{
 	
 	public:
 		
+		// Initialized a poppulation from a given group of chromosomes
+		Population(vector<Chromosome> chromosomes, string finalState);
+		
 		// Generates a population with a given size
 		Population(int size, string finalState);
+		
+		// add the chromosomes from other population to this
+		void add(Population other);
 		
 		// sort the population (by fitness)
 		void sort();
 		
 		// creates a new population based in a selection rate
 		//  - ratePct: the rate to select. e.g. 30 (30%)
-		void select(int ratePct);
+		//  - return: the selected population
+		Population select(int ratePct);
 		
 		// triggers a reproduction in the current population
 		//  - ratePct: the rate to reproduce. e.g. 70 (70%)
-		void reproduce(int ratePct);
+		//  - return: the reproduced population
+		Population reproduce(int ratePct);
 		
 		// triggers a mutation in the current population
 		void mutate();

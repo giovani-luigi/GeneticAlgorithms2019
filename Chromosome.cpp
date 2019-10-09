@@ -1,8 +1,16 @@
 #include "Chromosome.h"
 
-// default ctor
+// Constructor: Generates a chromosome from a random word,
+// using a given final state to calculate the fitness
 Chromosome::Chromosome(string finalState){	
 	this->value = Utils::generateWord(finalState.size());
+	this->fitness = calculateFitness(finalState);
+}
+
+// Constructor: Generates a chromosome from a given value,
+// using a given final state to calculate the fitness
+Chromosome::Chromosome(string value, string finalState){
+	this->value = value;
 	this->fitness = calculateFitness(finalState);
 }
 
@@ -27,6 +35,10 @@ int Chromosome::calculateFitness(string finalState){
 // fitness getter
 int Chromosome::getFitness(){
 	return this->fitness;
+}
+
+string Chromosome::getValue(){
+	return this->value; 
 }
 
 // override < operator

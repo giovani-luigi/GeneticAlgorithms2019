@@ -8,22 +8,25 @@ void runGenetics(
 	int mutationRate,
 	const char* finalState){			// no. of gen. iter. to perform each mutation
 
-	Population p(populationSize, finalState);
-		
-	cout << "Initial population: " << endl << p << endl;
+	Population population(populationSize, finalState);
 	
-	p.select(selectionRate);
+	cout << "Initial population: " << endl << population << endl;
 	
-	p.reproduce(100 - selectionRate);
+	for (int i=0; i<generationCount; i++){
+		Population selected = population.select(selectionRate);
+		selected.add(population.reproduce(100 - selectionRate));
+		population = selected;
+		cout << "Generation " << i+1 << endl;
+		cout << population << endl;
+	}
 	
-	cout << "Selected chromosomes: " << endl << p;
+	cout << "Done." << endl;
 	
 }
 
-
 int main(int argc, char** argv) {
 	
-	runGenetics(10, 1000, 30, 5, "Giovani");	
+	runGenetics(20, 1000, 30, 5, "GIOVANI");	
 	
 	return 0;
 }

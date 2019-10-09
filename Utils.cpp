@@ -2,7 +2,7 @@
 
 using namespace std;
 
-const string Utils::letters = "abcdefghijklmnopqrstuvxwyz ABCDEFGHIJHIJKLMNOPQRSTUVXWYZ";
+const string Utils::letters = "ABCDEFGHIJHIJKLMNOPQRSTUVXWYZ";
 
 bool Utils::randomized = false;
 
