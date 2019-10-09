@@ -76,12 +76,12 @@ Population Population::select(int ratePct, bool elitism){
 		if (i==0 && elitism){
 			// select the last chromosome of the collection (best fit)
 			selected = &(chromosomes[chromosomes.size()-1]);
-			cout << "Roulette selecting (by elitism): " << *selected << endl;
+//			cout << "Roulette selecting (by elitism): " << *selected << endl;
 		}else{
 			// select a random chromosome from roulette slots
 			int randomSlot = Utils::random(roulette.size());
 			selected = roulette[randomSlot];
-			cout << "Roulette selecting: " << *selected << endl;
+//			cout << "Roulette selecting: " << *selected << endl;
 		}		
 
 		// create a new roulette without the drawn chromosome for next iterations
@@ -149,7 +149,7 @@ Population Population::reproduce(int ratePct){
 // triggers a mutation in the current population
 void Population::mutate(){
 	
-	int qtyToMutate = Utils::random(chromosomes.size()/2) + 1;
+	int qtyToMutate = Utils::random(chromosomes.size()/2)+1;
 	
 	cout << "Mutating " << qtyToMutate << " chromosomes." << endl;
 	
@@ -164,6 +164,18 @@ void Population::mutate(){
 		
 		cout << *mutant << "]" << endl;
 	}
+}
+
+int Population::size(){
+	return chromosomes.size();
+}
+
+// trim the population to a maximum value
+void Population::trim(int max){
+	while ( chromosomes.size() > max ){
+		chromosomes.pop_back();   // erases last element
+		cout << "(X) Erasing last element" << endl;
+	}		
 }
 
 ostream& operator<<(ostream& out, const Population& p){

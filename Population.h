@@ -23,8 +23,14 @@ class Population{
 		// add the chromosomes from other population to this
 		void add(Population other);
 		
+		// trim the population to a maximum value
+		void trim(int max);
+		
 		// sort the population (by fitness)
 		void sort();
+		
+		// returns the number of chromosomes in the population
+		int size();
 		
 		// creates a new population based in a selection rate
 		//  - ratePct: the rate to select. e.g. 30 (30%)

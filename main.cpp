@@ -21,8 +21,9 @@ void runGenetics(
 		population.sort();
 		Population selected = population.select(selectionRate, true);
 		selected.add(population.reproduce(100 - selectionRate));
+		selected.trim(populationSize);
 		population = selected;
-		cout << "Generation " << i+1 << endl;
+		cout << "Generation " << i+1 << " with population count=" << population.size() << endl;
 		cout << population << endl;
 	}
 	
