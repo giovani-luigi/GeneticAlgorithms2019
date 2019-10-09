@@ -4,11 +4,18 @@ using namespace std;
 
 const string Utils::letters = "abcdefghijklmnopqrstuvxwyz ABCDEFGHIJHIJKLMNOPQRSTUVXWYZ";
 
+bool Utils::randomized = false;
+
+// generates a random word with a given size
 string Utils::generateWord(int size){
 	
 	stringstream buffer;
 	
-	srand(time(0));
+	// randomize only once
+	if (!randomized){
+		srand(time(0));
+		randomized = true;
+	}	
 	
 	for (int i=0; i<size; i++){
 		int index = rand() % letters.size();
@@ -16,4 +23,17 @@ string Utils::generateWord(int size){
 	}	
 	
 	return buffer.str();
+}
+
+// generates a random number between 0 and a max. value (exclusive)
+int Utils::random(int excMax){
+	
+	// randomize only once
+	if (!randomized){
+		srand(time(0));
+		randomized = true;
+	}	
+	
+	return rand() % excMax;
+	
 }

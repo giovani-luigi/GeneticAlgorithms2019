@@ -10,13 +10,28 @@ class Chromosome{
 
 	public:
 		
+		// Field: 
+		// relative fitness, i.e. (100 * fitness/total)
+		int fitnessPct;
+		
 		// Constructor: Generates a chromosome from a random word,
 		// using a given final state to calculate the fitness
 		Chromosome(string finalState);
 		
+		// fitness getter
+		int getFitness();
+		
 		// override operator < to support sort()
 		// we make it friend so we can access private class members
 		friend bool operator < (const Chromosome& a, const Chromosome& b);
+	
+		// override operator == so we can compare equality
+		// we make it friend so we can access private class members
+		friend bool operator == (const Chromosome& a, const Chromosome& b);
+		
+		// override operator != so we can compare inequality
+		// we make it friend so we can access private class members
+		friend bool operator != (const Chromosome& a, const Chromosome& b);
 		
 		// override operator for ostream objects
 		// we make it friend so we can access private class members
@@ -25,11 +40,13 @@ class Chromosome{
 	private:
 		
 		string value;
+		
+		// the fitness of this particular chromosome
 		int fitness;
 		
 		// member function to calculate a fitness score given 
 		// a final state expected from the cromosome
-		calculateFitness(string finalState);
+		int calculateFitness(string finalState);
 
 };
 
